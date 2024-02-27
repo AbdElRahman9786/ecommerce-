@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import Loder from "../../components/Loder/Loder";
 
 export const fetchproducts = createAsyncThunk(
   "productSlice/fetchproducts",
@@ -20,12 +21,23 @@ export const productSlice = createSlice({
     },
   },
   extraReducers:(builder)=>{
+  //   builder.addCase(fetchproducts.pending,(state, action) => {
+  //     return (
+  //       <h1>loding</h1>
+  //     );
+      
+
+  // })
+
+
     builder.addCase(fetchproducts.fulfilled,(state, action) => {
         return action.payload;
         
 
     })
   }
+ 
+  
 });
 
 export const { increment } = productSlice.actions;

@@ -1,9 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit'
 import productSlice from './rtk/slices/product-slice'
+import  sidebarproductSlice  from './rtk/slices/sidebar-slice'
+import  cartSlice  from './rtk/slices/opencart-slice'
 
 
 export default configureStore({
   reducer: {
-    products:productSlice
+    products:productSlice,
+    sidebarproducts:sidebarproductSlice,
+    cart:cartSlice
   },
 })
