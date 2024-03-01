@@ -19,8 +19,13 @@ export const sidebarproductSlice = createSlice({
   initialState: [],
 
   reducers: {
-    addtocart: (state, action) => {
-      return [...state,action.payload];
+    removefromcart: (state, action) => {
+      const newitem=state.filter(item=>{ return item.id!==action.payload})
+      state=newitem;
+      return state;
+    },
+    clearcart:(state)=>{
+      return state=[];
     },
   },
   extraReducers:(builder)=>{
@@ -37,6 +42,6 @@ export const sidebarproductSlice = createSlice({
   
 });
 
-export const { addtocart } = sidebarproductSlice.actions;
+export const { removefromcart,clearcart } = sidebarproductSlice.actions;
 
 export default sidebarproductSlice.reducer;
