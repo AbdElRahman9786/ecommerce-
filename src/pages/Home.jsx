@@ -25,7 +25,7 @@ const Home = () => {
   return (
     <>
    <div>
-  
+  <Hero/>
     <div className='py-16 px-5 flex flex-wrap gap-3 items-center justify-center gap-y-20 '>
     {fillterproducrs.map((item)=>{
       return(

@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 
 
 
-export const fetchproducts = createAsyncThunk(
+export const fetchproductsdetails = createAsyncThunk(
   "sidebarproductSlice/fetchproducts",
   async (id) => {
    
@@ -32,7 +32,7 @@ export const sidebarproductSlice = createSlice({
   
 
 
-    builder.addCase(fetchproducts.fulfilled,(state, action) => {
+    builder.addCase(fetchproductsdetails.fulfilled,(state, action) => {
         return [...state,action.payload];
         
 
