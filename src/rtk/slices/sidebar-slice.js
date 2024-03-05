@@ -10,7 +10,10 @@ export const fetchproductsdetails = createAsyncThunk(
     const res = await fetch(`https://fakestoreapi.com/products/${id}`);
     const data = await res.json();
 
-    return data;
+
+  return  {...data,quantaty:1};
+
+    
   }
 );
 
@@ -27,21 +30,42 @@ export const sidebarproductSlice = createSlice({
     clearcart:(state)=>{
       return state=[];
     },
+    increment: (state, action) => {
+      const { id } = action.payload;
+      const product = state.find((item) => item.id === id);
+      if (product) {
+        product.quantaty += 1;
+      }
+    },
+
+    decrement: (state, action) => {
+      const { id } = action.payload;
+      const product = state.find((item) => item.id === id);
+      if (product && product.quantaty>1) {
+        product.quantaty -= 1;
+      }
+    }
+
+
   },
-  extraReducers:(builder)=>{
-  
+  extraReducers: (builder) => {
+    builder.addCase(fetchproductsdetails.fulfilled, (state, action) => {
+        const existingProduct = state.find(item => item.id === action.payload.id);
 
-
-    builder.addCase(fetchproductsdetails.fulfilled,(state, action) => {
-        return [...state,action.payload];
-        
-
+        if (existingProduct) {
+           
+            existingProduct.quantaty += 1;
+        } else {
+           
+            state.push({ ...action.payload, quantaty: 1 });
+        }
     })
-  }
+}
+
  
   
 });
 
-export const { removefromcart,clearcart } = sidebarproductSlice.actions;
+export const { removefromcart,clearcart,increment,decrement } = sidebarproductSlice.actions;
 
 export default sidebarproductSlice.reducer;

@@ -12,11 +12,16 @@ const state1=useSelector(state=>state.cart)
 const dispatch=useDispatch();
 const state=useSelector(state=>state.sidebarproducts)
 
+const total = state.reduce((accumulator, item) => {
+  return accumulator + item.price * item.quantaty;
+}, 0);
+
+console.log(total);
 
 
   return (
     <>
-    <div className={`${state1?'right-0':'-right-full'} w-[45%]  bg-white fixed top-0 h-full z-20 shadow-2xl transition-all duration-300 px-4  overflow-y-scroll`}>
+    <div className={`${state1?'right-0':'-right-full'} lg:w-[45%] sm:w-screen  bg-white fixed top-0 h-full z-20 shadow-2xl transition-all duration-300 px-4  overflow-y-scroll`}>
 <div className='flex items-center justify-between py-6 border-b'>
   <div className='uppercase text-sm font-semibold'>shooping Bag ({state.length})</div>
   <div className='cursor-pointer w-8 h-8 flex items-center justify-center' onClick={()=>dispatch(opencart())}><IoMdArrowForward className='text-2xl'/></div>
@@ -28,7 +33,7 @@ const state=useSelector(state=>state.sidebarproducts)
 </div>
 <div className=''>
   <div className=' flex items-center justify-between '>
-    <div>Total:<span>1000</span></div>
+    <div>Total:<span>{total}</span></div>
     <div className='w-12 h-12 bg-red-500 flex items-center justify-center text-xl cursor-pointer '><FiTrash2 onClick={()=>{dispatch(clearcart())}}/></div>
   </div>
 </div>

@@ -7,11 +7,13 @@ import  productdetailsSlice  from './rtk/slices/productdetails-slice'
 
 
 
+
 export default configureStore({
   reducer: {
     products:productSlice,
     sidebarproducts:sidebarproductSlice,
     cart:cartSlice,
-    productdetails:productdetailsSlice
+    productdetails:productdetailsSlice,
+    
   },
 })

@@ -13,7 +13,9 @@ export const fetchproducts = createAsyncThunk(
 
 export const productSlice = createSlice({
   name: "products",
-  initialState: [],
+  initialState: [
+    {isloadin:false}
+  ],
 
   reducers: {
     increment: (state, action) => {
@@ -21,16 +23,17 @@ export const productSlice = createSlice({
     },
   },
   extraReducers:(builder)=>{
-  //   builder.addCase(fetchproducts.pending,(state, action) => {
-  //     return (
-  //       <h1>loding</h1>
-  //     );
+    builder.addCase(fetchproducts.pending,(state, action) => {
+    
+        
+      
       
 
-  // })
+  })
 
 
     builder.addCase(fetchproducts.fulfilled,(state, action) => {
+     
         return action.payload;
         
 

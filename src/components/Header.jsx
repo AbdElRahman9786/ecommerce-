@@ -23,14 +23,19 @@ const dispatch=useDispatch();
     <div className={`${isactive?'bg-white py-4 shadow-md':'bg-none py-6 '} fixed w-full z-10 transition-all`}>
     <div className='container flex justify-between items-center mx-auto h-full '>
       <div className='w-[40px]'>
+        <Link to={'/'}>
       <img src={Logo} alt='logo/photo'/>
+      </Link>
       </div>
 
-    <div onClick={()=>dispatch(opencart())}><BsBag className='text-2xl cursor-pointer flex relative'/></div>
-    {/* <div className='bg-red-500 absolute left-6 top-10  text-[12px] w-[18px] h-[18px] text-white rounded-full flex items-center justify-center'>
+    <div onClick={()=>dispatch(opencart())}><BsBag className='text-2xl cursor-pointer flex relative'/>
+        <div className='bg-red-500 absolute top-10  text-[12px] w-[18px] h-[18px] text-white rounded-full flex items-center justify-center'>
 
 {state2.length}
-    </div> */}
+    </div>
+    
+    </div>
+
     </div>
     </div>
     </>
